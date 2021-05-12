@@ -1,7 +1,7 @@
 from django.db import models
 import random
 import string
-from django.shortcuts import redirect
+# from django.shortcuts import redirect
 from django.core import validators
 
 # создание моделей
