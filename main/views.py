@@ -10,8 +10,11 @@ from django.http import HttpRequest, HttpResponse
 def index(request):
     new_link = ''  # переменная, куда будет помещена новая ссылка
     # обработка кнопки "Выполнить!"
+
     if request.method == 'POST':
         form = UrlForm(request.POST)
+        if 'main' in request.POST:
+            return redirect('/')
         error = ''  # переменная, в которой будет текст об ошибке
         #  проверка формы на валидность
         if not form.is_valid():
@@ -29,7 +32,6 @@ def index(request):
     form = UrlForm()
     context = {
         'form': form}
-
     return render(request, 'main/index.html', context)  # возвращает html шаблон вместе с формой
 
 
