@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import Url
 from .forms import UrlForm
 from django.http import HttpRequest, HttpResponse
-import pyperclip
 # from django.core.exceptions import ValidationError
 
 
@@ -26,7 +25,6 @@ def index(request):
             form.save()  # сохранение данных из формы в БД
             new_link = str(f'{request.get_host()}/{form.save().new}')  # полный адрес новой ссылки
             n_link = str(f'{form.save().new}')  # адрес без домена
-            pyperclip.copy(new_link)  # копирование ссылки в буфер обмена
             return render(request, 'main/result.html', {'tasks': new_link, 'links': n_link})  # вывод данных о короткой ссылке
     form = UrlForm()
     context = {
