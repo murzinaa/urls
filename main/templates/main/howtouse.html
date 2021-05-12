@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Инструкция
+{% endblock %}
+
+{% block text %}
+
+   <center style="color: navajowhite"><strong>Информация про использование сократителя</strong></center><br><br>
+<p style="color: bisque">
+<strong>Инструкция пользования нашим сократителем:<br><br>
+    1) Введите в верхнее поле ссылку, которую вы хотите сократить;<br><br>
+    2) Введите новую ссылку в нижнее поле либо оставьте поле пустым, чтобы она сгенерировалась автоматически;<br><br>
+    3) Нажмите кнопку "Выполнить!"<br><br>
+    4) Ваша ссылка готова. Теперь вы можете ее использовать!</strong>
+
+</p>
+ <form method="post">
+        {% csrf_token %}
+
+        <center><button type="submit" class="btn btn-outline-warning">На главную!</button></center><br>
+
+
+    </form>
+{% endblock %}

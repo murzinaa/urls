@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+    <style>
+        body {
+            background: gray;
+            color: bisque;
+        }
+    </style>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
+  <h5 class="h5 my-0 me-md-auto fw-normal">URL SHORTENER</h5>
+  <nav class="my-12 my-md-10 me-md-13">
+      <a class="p-5 text-dark" href="/">Главная</a>
+    <a class="p-5 text-dark" href="/howtouse">Как пользоваться</a>
+    <a class="p-5 text-dark" href="/about">Про нас</a>
+    <a class="p-5 text-dark" href="/bot">Наш бот</a>
+
+  </nav>
+</div>
+    <div class="container">
+        {% block text %}{% endblock %}
+    </div>
+
+
+</body>
+</html>

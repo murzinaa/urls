@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% block title %}
+URL SHORTENER
+{% endblock %}
+
+
+{% block text %}
+<p style="color: #be0606">
+    <strong>{{error}}</strong></p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.old }}<br>
+        {{ form.new }}<br>
+
+        <button type="submit" class="btn btn-outline-warning">Выполнить!</button><br>
+
+
+    </form>
+
+{% endblock %}

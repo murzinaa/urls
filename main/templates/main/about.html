@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Про нас
+{% endblock %}
+
+{% block text %}
+<center style="color: navajowhite"><strong>Обратная связь</strong></center><br>
+
+ <center style="color: navajowhite"><strong>Данные о создателях программы</strong></center><br><br>
+<p style="color: bisque">
+<strong>В проекте участвовали:<br><br>
+    студентки 1 курса ХНЭУ факультета Информационных технологий,
+    специальности 121 "Инженерия программного обеспечения" <br>
+
+
+    </strong>
+
+</p>
+
+
+
+<p style="color: #13110c">
+    <strong>Виктория Мурзина и Валерия Калиненко</strong>
+</p><br><br><br>
+
+<p style="color: #13110c">
+    <strong>Telegram:<br><br>
+    Виктория:
+        <a style="color:coral" href = https://t.me/Murzinaaa >https://t.me/Murzinaaa</a><br>
+    Валерия:
+        <a style="color:coral" href = https://t.me/lerka_kalynenko >https://t.me/lerka_kalynenko</a><br>
+
+    </strong>
+</p>
+ <form method="post">
+        {% csrf_token %}
+
+        <center><button type="submit" class="btn btn-outline-warning">На главную!</button></center><br>
+
+
+    </form>
+{% endblock %}
+
