@@ -1,31 +1,27 @@
-from django.db import models
 import random
 import string
-# from django.shortcuts import redirect
-from django.core import validators
 
-# создание моделей
+from django.core import validators
+from django.db import models
 
 
 class Url(models.Model):
-    # указание класса полей и их ограничений
-    old = models.URLField('Старая ссылка', max_length=500, default='',
-                          validators=[validators.URLValidator()])
+    old = models.URLField(
+        verbose_name='Старая ссылка',
+        max_length=500,
+        default='',
+        validators=[validators.URLValidator()]
+    )
     new = models.CharField('Новая ссылка', blank=True, max_length=20, unique=True)
 
     def __str__(self):
         return self.old
 
-    # функция, которая проверяет поле на пустоту и генерирует рандомную ссылку
     def save(self, *args, **kwargs):
         if not self.new:
             self.new = ''.join([random.choice(string.digits + string.ascii_letters) for _ in range(5)])
-        super(Url, self).save(*args, **kwargs)  # Сохраняем запись, вызвав унаследованный метод
+        super().save(*args, **kwargs)
 
-
-'''    def proverka(self, *args, **kwargs):
-        if self.old:
-            if not Url.objects.filter(old=self):
-                return redirect('/about')
-            else:
-                super(Url, self).proverka(*args, **kwargs)'''
+    class Meta:
+        verbose_name = 'Ссылка'
+        verbose_name_plural = 'Ссылки'
