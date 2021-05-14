@@ -9,7 +9,7 @@ from django.core import validators
 
 class Url(models.Model):
     # указание класса полей и их ограничений
-    old = models.URLField('Старая ссылка', max_length=500, default='',
+    old = models.URLField(verbose_name='Старая ссылка', max_length=500, default='',
                           validators=[validators.URLValidator()])
     new = models.CharField('Новая ссылка', blank=True, max_length=20, unique=True)
 
@@ -21,6 +21,10 @@ class Url(models.Model):
         if not self.new:
             self.new = ''.join([random.choice(string.digits + string.ascii_letters) for _ in range(5)])
         super(Url, self).save(*args, **kwargs)  # Сохраняем запись, вызвав унаследованный метод
+
+    class Meta:
+        verbose_name="Ссылка"
+        verbose_name_plural='Ссылки'
 
 
 '''    def proverka(self, *args, **kwargs):
