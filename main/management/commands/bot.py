@@ -5,10 +5,12 @@ from aiogram import Bot, Dispatcher, types, executor
 
 from main.models import Url
 
+# Создание бота
 bot = Bot(settings.TOKEN)
 dp = Dispatcher(bot)
 
 
+# Обработка команды /start
 @dp.message_handler(commands=['start'])
 async def handle_start_command(message: types.Message):
     await message.answer(
@@ -17,6 +19,7 @@ async def handle_start_command(message: types.Message):
     )
 
 
+# Обработка кнопки Shorten the link
 @dp.message_handler(text=['Shorten the link'])
 async def handle_shorten_the_lint(message: types.Message):
     await message.answer(
@@ -25,10 +28,21 @@ async def handle_shorten_the_lint(message: types.Message):
     )
 
 
+# Обработка ссылок
 @dp.message_handler()
 async def handle_text(message: types.Message):
-    if len(message.text.split()) == 2:
-        if entities := message.entities:
+    if len(message.text.split()) != 2 or not message.entities:
+        return
+    entity = message.entities[0]
+    if entity.type != 'url':
+        return
+    url = Url(
+        old=message.text[entity.offset:entity.offset + entity.length],
+        new=message.text.split()[1] if message.text.split()[1] != '@' else ''
+    )
+    await sync_to_async(url.save)()
+    await message.answer(f'Вот Ваша новая ссылка! https://prourl.herokuapp.com/{url.new}')
+    '''if entities := message.entities:
             entity = entities[0]
             if entity.type == 'url':
                 url = Url(
@@ -36,9 +50,10 @@ async def handle_text(message: types.Message):
                     new=message.text.split()[1] if message.text.split()[1] != '@' else ''
                 )
                 await sync_to_async(url.save)()
-                await message.answer(f'Вот Ваша новая ссылка! https://prourl.herokuapp.com/{url.new}')
+                await message.answer(f'Вот Ваша новая ссылка! https://prourl.herokuapp.com/{url.new}')'''
 
 
+# класс, который создал команду бот
 class Command(BaseCommand):
     help = "Телеграм-бот"
 
