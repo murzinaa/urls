@@ -20,3 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # переход на страницу администратора
     path('', include('main.urls')),  # подключает urlpatterns из файла main.urls
 ]
+
