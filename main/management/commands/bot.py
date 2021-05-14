@@ -9,11 +9,11 @@ from telegram.ext import Updater
 from telegram.ext.filters import Filters
 from telegram.ext.conversationhandler import CallbackContext
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
-# from . .models import Url
+from main.models import Url
 
 
 def start(update: Update, context: CallbackContext):
-    reply_text = 'Здравствуйте! Я URL-бот. Помогу Вам сократить ссылку. Пропишите "Сократить ссылку".'
+    reply_text = 'Здравствуйте! Я URL-бот. Помогу Вам сократить ссылку. Нажмите на кнопку "Shorten the link".'
     reply_keyboard = [['Shorten the link']]
     markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=True)
     update.message.reply_text(
@@ -41,14 +41,14 @@ def link(update: Update, context: CallbackContext):
     t1, t2 = tex(update, context)
     if t2 == '@':
         t2 = ''
-    '''form = Url(
+    form = Url(
         old=t1,
         new=t2
     )
 
-    form.save()'''
+    form.save()
     update.message.reply_text(
-        text='http://127.0.0.1:8000/',
+        text='Вот Ваша новая ссылка! http://127.0.0.1:8000/' + form.new,
     )
 
 
