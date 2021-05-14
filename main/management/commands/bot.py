@@ -9,7 +9,7 @@ from telegram.ext import Updater
 from telegram.ext.filters import Filters
 from telegram.ext.conversationhandler import CallbackContext
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
-from main.models import Url
+from shorturls.main.models import Url
 
 
 def start(update: Update, context: CallbackContext):
