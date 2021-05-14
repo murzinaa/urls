@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,6 @@ DATABASES['default'].update(db_from_env)
 django_heroku.settings(locals())
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'shorturls.settings'
