@@ -1,2 +1,2 @@
 web: gunicorn shorturls.wsgi --log-file -
-worker: python bot.py $PORT
+worker: python main\management\commands\bot.py $PORT
