@@ -42,15 +42,6 @@ async def handle_text(message: types.Message):
     )
     await sync_to_async(url.save)()
     await message.answer(f'Вот Ваша новая ссылка! https://prourl.herokuapp.com/{url.new}')
-    '''if entities := message.entities:
-            entity = entities[0]
-            if entity.type == 'url':
-                url = Url(
-                    old=message.text[entity.offset:entity.offset+entity.length],
-                    new=message.text.split()[1] if message.text.split()[1] != '@' else ''
-                )
-                await sync_to_async(url.save)()
-                await message.answer(f'Вот Ваша новая ссылка! https://prourl.herokuapp.com/{url.new}')'''
 
 
 # класс, который создал команду бот

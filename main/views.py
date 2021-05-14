@@ -9,7 +9,6 @@ from django.views import View
 
 # Create your views here.
 
-
 '''def index(request):
     new_link = ''  # переменная, куда будет помещена новая ссылка
     # обработка кнопки "Выполнить!"
@@ -68,9 +67,8 @@ def bot(request):
         return redirect('/')
     return render(request, 'main/bot.html')  # возвращает html шаблон'''
 
+
 # класс, который вызывается при переходе на страницу "Главная"
-
-
 class IndexView(View):
 
     index = 'main/index.html'
