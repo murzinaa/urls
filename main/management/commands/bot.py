@@ -9,7 +9,7 @@ from telegram.ext import Updater
 from telegram.ext.filters import Filters
 from telegram.ext.conversationhandler import CallbackContext
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
-from shorturls.main.models import Url
+# from . .models import Url
 
 
 def start(update: Update, context: CallbackContext):
@@ -41,14 +41,14 @@ def link(update: Update, context: CallbackContext):
     t1, t2 = tex(update, context)
     if t2 == '@':
         t2 = ''
-    form = Url(
+    '''form = Url(
         old=t1,
         new=t2
     )
 
-    form.save()
+    form.save()'''
     update.message.reply_text(
-        text='http://127.0.0.1:8000/' + form.new,
+        text='http://127.0.0.1:8000/',
     )
 
 
